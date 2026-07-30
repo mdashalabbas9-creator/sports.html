@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Account – ApexWear</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0b1120; color: #e2e8f0; line-height: 1.7;
+        }
+        a { text-decoration: none; color: inherit; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0b1120; }
+        ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 10px; }
+        .nav {
+            position: sticky; top: 0; z-index: 1000;
+            background: rgba(11, 17, 32, 0.92); backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(59,130,246,0.08);
+        }
+        .nav-inner { max-width: 1400px; margin: 0 auto; padding: 0.8rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+        .brand { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 0.5rem; }
+        .logo-icon {
+            display: inline-flex; width: 36px; height: 36px;
+            background: linear-gradient(135deg, #3b82f6, #2563eb); border-radius: 10px;
+            align-items: center; justify-content: center; font-size: 1.1rem; color: #fff; font-weight: 800;
+        }
+        .brand span { color: #3b82f6; }
+        .nav-links { display: flex; align-items: center; gap: 2.5rem; }
+        .nav-links a { font-size: 0.85rem; font-weight: 500; color: rgba(226,232,240,0.6); transition: color 0.3s; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: #3b82f6; transition: width 0.3s; }
+        .nav-links a:hover { color: #60a5fa; }
+        .nav-links a:hover::after { width: 100%; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+        .page-in { animation: pageIn .7s ease both; }
+        @keyframes pageIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+        .account-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; margin-top: 2rem; }
+        @media (max-width: 800px) { .account-wrap { grid-template-columns: 1fr; } }
+        .form-box {
+            background: linear-gradient(145deg, #0f172a, #1e293b);
+            border: 1px solid rgba(59,130,246,0.1); border-radius: 20px; padding: 3rem 2rem;
+        }
+        .form-box h2 { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .form-box .sub { color: rgba(148,163,184,0.5); font-size: 0.85rem; margin-bottom: 2rem; }
+        label { display: block; color: rgba(148,163,184,0.6); font-size: 0.82rem; font-weight: 600; margin-bottom: 0.4rem; }
+        input { width: 100%; padding: 0.8rem 1rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(59,130,246,0.1); border-radius: 12px; color: #e2e8f0; font-family: 'Inter', sans-serif; font-size: 0.9rem; outline: none; margin-bottom: 1.2rem; transition: all 0.3s; }
+        input:focus { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,0.1); }
+        .btn {
+            display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.85rem 2rem;
+            border-radius: 50px; font-family: 'Inter', sans-serif; font-size: 0.88rem;
+            font-weight: 600; cursor: pointer; transition: all 0.3s; border: none;
+        }
+        .btn-primary { background: linear-gradient(135deg, #3b82f6, #2563eb); color: #fff; box-shadow: 0 4px 20px rgba(59,130,246,0.3); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(59,130,246,0.4); }
+        .btn-secondary { background: transparent; color: #e2e8f0; border: 1px solid rgba(59,130,246,0.3); }
+        .btn-secondary:hover { border-color: #60a5fa; color: #60a5fa; }
+        .forgot { color: rgba(148,163,184,0.5); font-size: 0.82rem; margin-top: 0.5rem; display: inline-block; }
+        .forgot:hover { color: #60a5fa; }
+        .or-divider { display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0; color: rgba(148,163,184,0.3); font-size: 0.82rem; }
+        .or-divider::before, .or-divider::after { content: ''; flex: 1; height: 1px; background: rgba(59,130,246,0.08); }
+        .social-login { display: flex; gap: 0.8rem; }
+        .social-btn { flex: 1; padding: 0.7rem; text-align: center; border-radius: 12px; border: 1px solid rgba(59,130,246,0.1); background: rgba(255,255,255,0.02); color: rgba(148,163,184,0.5); font-size: 0.85rem; cursor: pointer; transition: all 0.3s; }
+        .social-btn:hover { border-color: rgba(59,130,246,0.3); color: #e2e8f0; }
+        footer { background: #070c18; border-top: 1px solid rgba(59,130,246,0.06); padding: 2rem; text-align: center; color: rgba(148,163,184,0.3); font-size: 0.8rem; margin-top: 4rem; }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="sports.html" class="brand">
+                <span class="logo-icon">A</span> Apex<span>Wear</span>
+            </a>
+            <div class="nav-links">
+                <a href="sports.html">Home</a>
+                <a href="task-about.html">About</a>
+                <a href="task-services.html">Services</a>
+                <a href="task-contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+    <main class="container page-in">
+        <h1 style="font-family:'Montserrat',sans-serif;font-size:2rem;">My Account</h1>
+        <p style="color:rgba(148,163,184,0.5);margin-bottom:1rem;">Login or create an account to manage your orders.</p>
+        <div class="account-wrap">
+            <div class="form-box">
+                <h2>Login</h2>
+                <p class="sub">Welcome back! Sign in to your account.</p>
+                <form onsubmit="event.preventDefault();alert('Login functionality coming soon!');">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="you@example.com" required />
+                    <label>Password</label>
+                    <input type="password" placeholder="••••••••" required />
+                    <button type="submit" class="btn btn-primary">Sign In →</button>
+                    <a href="#" class="forgot">Forgot password?</a>
+                </form>
+            </div>
+            <div class="form-box">
+                <h2>Register</h2>
+                <p class="sub">Create a new account to get started.</p>
+                <form onsubmit="event.preventDefault();alert('Registration coming soon!');">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="John Doe" required />
+                    <label>Email Address</label>
+                    <input type="email" placeholder="you@example.com" required />
+                    <label>Password</label>
+                    <input type="password" placeholder="••••••••" required />
+                    <button type="submit" class="btn btn-primary">Create Account →</button>
+                </form>
+                <div class="or-divider">or continue with</div>
+                <div class="social-login">
+                    <div class="social-btn">Google</div>
+                    <div class="social-btn">Facebook</div>
+                    <div class="social-btn">Apple</div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>© 2025 ApexWear. Premium Sportswear. All rights reserved.</footer>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Soccer Collection – ApexWear</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #ffffff; color: #334155; line-height: 1.7; overflow-x: hidden;
+        }
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #2563eb; border-radius: 10px; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', 'Segoe UI', sans-serif; font-weight: 800; line-height: 1.2; }
+
+        .nav {
+            position: sticky; top: 0; z-index: 1000;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(37, 99, 235, 0.1); transition: all 0.3s;
+        }
+        .nav-inner { max-width: 1400px; margin: 0 auto; padding: 0.8rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+        .brand { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 0.5rem; }
+        .logo-icon { display: inline-flex; width: 36px; height: 36px; background: linear-gradient(135deg, #2563eb, #1d4ed8); border-radius: 10px; align-items: center; justify-content: center; font-size: 1.1rem; color: #fff; font-weight: 800; }
+        .brand span { color: #2563eb; }
+        .nav-links { display: flex; align-items: center; gap: 2.5rem; }
+        .nav-links a { font-size: 0.85rem; font-weight: 500; color: #64748b; transition: color 0.3s; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: #2563eb; transition: width 0.3s; }
+        .nav-links a:hover { color: #2563eb; }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a.active { color: #2563eb; }
+        .nav-links a.active::after { width: 100%; }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 2rem 4rem; }
+        .page-in { animation: pageIn .7s ease both; }
+        @keyframes pageIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+        .cat-hero {
+            min-height: 50vh; display: flex; align-items: center; justify-content: center; text-align: center;
+            border-radius: 24px; margin: 2rem 0 3rem; position: relative; overflow: hidden;
+            background: linear-gradient(160deg, #0a1628 0%, #0f1f3d 25%, #0d0d0d 55%, #000000 100%);
+            padding: 6rem 4rem;
+        }
+        .cat-hero-bg {
+            position: absolute; inset: 0; z-index: 0;
+            background: url('https://images.unsplash.com/photo-1551955161-2e7b7b3b5c4e?w=1600&q=80') center 40% / cover no-repeat;
+        }
+        .cat-hero-bg::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(10, 22, 40, 0.85) 0%, rgba(0, 0, 0, 0.7) 100%);
+        }
+        .cat-hero > * { position: relative; z-index: 2; }
+        .cat-hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); color: #fff; margin-bottom: 0.8rem; }
+        .cat-hero h1 .highlight { background: linear-gradient(135deg, #60a5fa, #2563eb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .cat-hero p { color: rgba(180, 200, 220, 0.6); font-size: 1.05rem; max-width: 600px; margin: 0 auto 1.5rem; }
+
+        .btn {
+            display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.9rem 2.2rem;
+            border-radius: 50px; font-family: 'Inter', sans-serif; font-size: 0.88rem;
+            font-weight: 600; cursor: pointer; transition: all 0.3s; border: none;
+        }
+        .btn-primary { background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #fff; box-shadow: 0 4px 25px rgba(37, 99, 235, 0.35); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 35px rgba(37, 99, 235, 0.45); }
+
+        .section-title { font-size: clamp(1.8rem, 3.5vw, 2.8rem); color: #0f172a; margin-bottom: 2rem; }
+
+        .prod-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin: 2rem 0 3rem; }
+        @media (max-width: 1100px) { .prod-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .prod-grid { grid-template-columns: 1fr; } }
+
+        .prod-card {
+            border-radius: 16px; border: 1px solid #e2e8f0;
+            background: #ffffff; padding: 1rem; transition: all 0.4s;
+        }
+        .prod-card:hover { transform: translateY(-4px); border-color: #2563eb; box-shadow: 0 15px 40px rgba(37, 99, 235, 0.08); }
+        .prod-card .thumb { width: 100%; aspect-ratio: 1; border-radius: 12px; background: #f8fafc; margin-bottom: 0.8rem; overflow: hidden; }
+        .prod-card .thumb img { width: 100%; height: 100%; object-fit: cover; }
+        .prod-card h4 { font-family: 'Inter', sans-serif; font-size: 0.82rem; font-weight: 600; color: #0f172a; margin-bottom: 0.3rem; }
+        .prod-card .price { font-weight: 700; color: #2563eb; font-size: 0.95rem; }
+        .prod-card .badge-cat { font-size: 0.65rem; font-weight: 700; color: #2563eb; background: rgba(37,99,235,0.08); padding: 0.2rem 0.6rem; border-radius: 50px; display: inline-block; margin-top: 0.4rem; }
+
+        .reveal { animation: fadeUp .75s ease both; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+
+        .breadcrumb { display: flex; gap: 0.5rem; font-size: 0.85rem; color: #94a3b8; margin: 1.5rem 0 0; }
+        .breadcrumb a { color: #64748b; transition: color 0.3s; }
+        .breadcrumb a:hover { color: #2563eb; }
+        .breadcrumb span { color: #2563eb; font-weight: 600; }
+
+        footer { background: #0f172a; padding: 2rem; text-align: center; color: rgba(148,163,184,0.3); font-size: 0.8rem; }
+
+        @media (max-width: 900px) { .cat-hero { padding: 3rem 2rem; } }
+        @media (max-width: 768px) { .nav-links { gap: 0.8rem; } .nav-inner { padding: 0.8rem 1rem; flex-wrap: wrap; } }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="sports.html" class="brand">
+                <span class="logo-icon">A</span> Apex<span>Wear</span>
+            </a>
+            <div class="nav-links">
+                <a href="sports.html">Home</a>
+                <a href="sports-basketball.html">Basketball</a>
+                <a href="sports-football.html">Football</a>
+                <a href="sports-soccer.html" class="active">Soccer</a>
+                <a href="sports-softball.html">Softball</a>
+                <a href="sports-rugby.html">Rugby</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container page-in">
+        <div class="breadcrumb">
+            <a href="sports.html">Home</a> / <span>Soccer Collection</span>
+        </div>
+
+        <section class="cat-hero">
+            <div class="cat-hero-bg"></div>
+            <div class="reveal">
+                <h1>⚽ <span class="highlight">Soccer</span> Collection</h1>
+                <p>Performance soccer kits and training gear designed for speed, agility, and endurance on the pitch.</p>
+                <a href="#products" class="btn btn-primary">Shop All Soccer →</a>
+            </div>
+        </section>
+
+        <h2 class="section-title reveal" id="products">Soccer Uniforms & Gear</h2>
+        <div class="prod-grid reveal">
+            <div class="prod-card">
+                <div class="thumb"><img src="https://echopride.store/wp-content/uploads/2025/09/a-high-performance-fleece-lined-hoodie-for-basketb-700x700.webp" alt="Soccer Hoodie" loading="lazy"/></div>
+                <h4>Performance Fleece Hoodie</h4>
+                <span class="price">$50.00</span>
+                <span class="badge-cat">Soccer</span>
+            </div>
+            <div class="prod-card">
+                <div class="thumb"><img src="https://echopride.store/wp-content/uploads/2025/09/a-lightweight-basketball-coach-s-windbreaker-with--700x700.webp" alt="Soccer Windbreaker" loading="lazy"/></div>
+                <h4>Lightweight Windbreaker</h4>
+                <span class="price">$60.00</span>
+                <span class="badge-cat">Soccer</span>
+            </div>
+            <div class="prod-card">
+                <div class="thumb"><img src="https://echopride.store/wp-content/uploads/2025/09/a-minimalist-basketball-coach-s-jacket-with-subtle-700x700.webp" alt="Soccer Jacket" loading="lazy"/></div>
+                <h4>Minimalist Coach Jacket</h4>
+                <span class="price">$50.00</span>
+                <span class="badge-cat">Soccer</span>
+            </div>
+            <div class="prod-card">
+                <div class="thumb"><img src="https://echopride.store/wp-content/uploads/2025/09/a-moisture-wicking-basketball-coach-s-hoodie-with-1-700x700.webp" alt="Soccer Hoodie" loading="lazy"/></div>
+                <h4>Moisture-Wicking Hoodie</h4>
+                <span class="price">$50.00</span>
+                <span class="badge-cat">Soccer</span>
+            </div>
+            <div class="prod-card">
+                <div class="thumb"><img src="https://echopride.store/wp-content/uploads/2025/09/a-premium-varsity-style-basketball-coaching-jacket-700x700.webp" alt="Soccer Varsity" loading="lazy"/></div>
+                <h4>Premium Varsity Jacket</h4>
+                <span class="price">$60.00</span>
+                <span class="badge-cat">Soccer</span>
+            </div>
+            <div class="prod-card">
+                <div class="thumb"><img src="https://echopride.store/wp-content/uploads/2025/09/a-quarter-zip-basketball-coach-s-pullover-with-a-s-700x700.webp" alt="Soccer Pullover" loading="lazy"/></div>
+                <h4>Quarter-Zip Pullover</h4>
+                <span class="price">$50.00</span>
+                <span class="badge-cat">Soccer</span>
+            </div>
+            <div class="prod-card">
+                <div class="thumb"><img src="https://echopride.store/wp-content/uploads/2025/09/a-sleek-modern-basketball-coach-s-hoodie-featuri-700x700.webp" alt="Soccer Modern Hoodie" loading="lazy"/></div>
+                <h4>Sleek Modern Hoodie</h4>
+                <span class="price">$50.00</span>
+                <span class="badge-cat">Soccer</span>
+            </div>
+            <div class="prod-card">
+                <div class="thumb"><img src="https://echopride.store/wp-content/uploads/2025/09/a-waterproof-basketball-coach-s-jacket-with-a-bold-700x700.webp" alt="Waterproof Jacket" loading="lazy"/></div>
+                <h4>Waterproof Coach Jacket</h4>
+                <span class="price">$60.00</span>
+                <span class="badge-cat">Soccer</span>
+            </div>
+        </div>
+    </main>
+
+    <footer>© 2025 ApexWear. Premium Sportswear. All rights reserved.</footer>
+</body>
+</html>
+

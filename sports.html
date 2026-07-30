@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ApexWear – Premium Sportswear</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background:linear-gradient(#9b3217,#991b1b,#64342e); color: #dee7e0; line-height: 1.7; overflow-x: hidden;
+        }
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #d3b408; }
+        ::-webkit-scrollbar-thumb { background: #af550c; border-radius: 10px; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', 'Segoe UI', sans-serif; font-weight: 800; line-height: 1.2; }
+        .section-label {
+            display: inline-block; font-family: 'Inter', sans-serif; font-size: 0.72rem;
+            font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+            color: #24d81e; margin-bottom: 1rem; position: relative; padding-left: 2.8rem;
+        }
+        .section-label::before {
+            content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+            width: 2rem; height: 3px; background: #ca480c;
+        }
+
+        /* ─── Top Announcement Bar ─── */
+        .top-bar {
+            background: linear-gradient(135deg, #be2217, #3b82f6);
+            padding: 0.5rem 0; overflow: hidden; position: relative;
+        }
+        .top-bar-inner { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
+        .top-bar-scroll { display: flex; animation: scrollText 18s linear infinite; white-space: nowrap; }
+        .top-bar-item { font-size: 0.8rem; color: rgba(255,255,255,0.85); font-weight: 500; padding: 0 2rem; border-right: 1px solid rgba(255,255,255,0.15); letter-spacing: 0.3px; }
+        .top-bar-item:last-child { border-right: none; }
+        .top-bar-item strong { color: #fff; }
+        @keyframes scrollText { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* ─── Navigation ─── */
+        .nav {
+            position: sticky; top: 0; z-index: 1000;
+            background: rgba(226, 85, 85, 0.95); backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1); transition: all 0.3s;
+        }
+        .nav-inner { max-width: 1400px; margin: 0 auto; padding: 0.8rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+        .brand { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 0.5rem; letter-spacing: -0.5px; }
+        .logo-icon {
+            display: inline-flex; width: 38px; height: 38px;
+            align-items: center; justify-content: center;
+        }
+        .logo-icon svg {
+            width: 38px; height: 38px; display: block;
+            filter: drop-shadow(0 2px 4px rgba(220,38,38,0.3));
+        }
+        .brand span { color: #dc2626; }
+        .nav-links { display: flex; align-items: center; gap: 2.5rem; }
+        .nav-links a { font-size: 0.85rem; font-weight: 500; color: #000000; transition: all 0.3s; position: relative; letter-spacing: 0.3px; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: #000000; transition: width 0.3s; }
+        .nav-links a:hover { color: #000000; }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a.active { color: #030811; }
+        .nav-links a.active::after { width: 100%; }
+        .nav-icons { display: flex; align-items: center; gap: 1rem; }
+        .nav-icon { width: 20px; height: 20px; color: #000000; cursor: pointer; transition: color 0.3s; }
+        .nav-icon:hover { color: #000000; }
+
+        /* ─── Hamburger Menu ─── */
+        .hamburger {
+            display: none; flex-direction: column; cursor: pointer; gap: 5px; background: none; border: none; padding: 4px;
+        }
+        .hamburger span {
+            width: 24px; height: 2.5px; background: #bb3838; border-radius: 2px;
+            transition: all 0.3s; display: block;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 2rem 4rem; }
+        .page-in { animation: pageIn .7s ease both; }
+        @keyframes pageIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ─── Hero ─── */
+        .hero {
+            min-height: 80vh;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+            border-radius: 24px;
+            padding: 4rem;
+            margin: 2rem 0 3rem;
+            position: relative;
+            overflow: hidden;
+            background: #b12b21;
+        }
+
+        .hero-bg {
+          .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image:("sports2.jpg");
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+        }
+
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(15, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.55) 45%, rgba(0, 0, 0, 0.8) 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 25% 40%, rgba(239, 68, 68, 0.12) 0%, transparent 45%),
+                        radial-gradient(circle at 75% 60%, rgba(220, 38, 38, 0.06) 0%, transparent 45%);
+            animation: heroGlow 8s ease-in-out infinite alternate;
+            z-index: 1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background: radial-gradient(ellipse at 50% 30%, rgba(255, 255, 255, 0.06) 0%, transparent 50%),
+                        radial-gradient(ellipse at 50% 80%, rgba(239, 68, 68, 0.03) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        @keyframes heroGlow {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(-1%, 1%) scale(1.03); }
+        }
+
+        .hero > * { position: relative; z-index: 2; }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: #fff;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, #f87171, #dc2626);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: rgba(220, 200, 200, 0.85);
+            max-width: 480px;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            color: #fff;
+            box-shadow: 0 4px 25px rgba(220, 38, 38, 0.35);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 35px rgba(220, 38, 38, 0.45);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .btn-secondary:hover {
+            border-color: #f87171;
+            color: #f87171;
+            background: rgba(220, 38, 38, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .hero-card {
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(12px);
+        }
+
+        .hero-card .mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+        .mini {
+            border-radius: 14px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 1.2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            justify-content: center;
+        }
+
+        .mini b { font-size: 15px; color: #fff; font-weight: 600; }
+        .mini span { color: rgba(220, 200, 200, 0.7); font-size: 13px; line-height: 1.4; }
+
+        .floaty { animation: floaty 3s ease-in-out infinite; }
+        @keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+        .reveal { animation: fadeUp .75s ease both; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ─── Scroll Reveal Animation ─── */
+        .scroll-reveal {
+            opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ─── Stats ─── */
+        .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin: 3rem 0; }
+        .stat {
+            text-align: center; padding: 2rem 1.5rem;
+            background: #b36735; border: 1px solid #4dad39; border-radius: 16px;
+            transition: all 0.3s;
+        }
+        .stat:hover { border-color: #3b82f6; box-shadow: 0 8px 30px rgba(59,130,246,0.08); }
+        .stat .num { font-family: 'Montserrat', sans-serif; font-size: 2.5rem; font-weight: 800; color: #3b82f6; line-height: 1; }
+        .stat .label { color: #64748b; font-size: 0.85rem; margin-top: 0.4rem; font-weight: 500; }
+
+        /* ─── Section Title ─── */
+        .section-title { font-size: clamp(1.8rem, 3.5vw, 2.8rem); color: #0f172a; margin-bottom: 2rem; letter-spacing: -0.5px; }
+        .section-sub { color: #64748b; font-size: 0.95rem; margin-top: -1.5rem; margin-bottom: 2rem; font-weight: 400; max-width: 600px; }
+
+        /* ─── Cards ─── */
+        .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        @media (max-width: 980px) { .cards { grid-template-columns: 1fr; } }
+        .card {
+            border-radius: 16px; border: 1px solid #e2e8f0;
+            background: #cf2a2a; padding: 2rem; transition: all 0.4s;
+        }
+        .card:hover { transform: translateY(-4px); border-color: #3b82f6; box-shadow: 0 20px 50px rgba(59,130,246,0.08); }
+        .card .icon { font-size: 2.2rem; margin-bottom: 1rem; }
+        .card h3 { font-family: 'Inter', sans-serif; color: #0f172a; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .card p { color: #64748b; font-size: 0.9rem; line-height: 1.6; }
+
+        /* ─── Category Grid ─── */
+        .cat-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.2rem; margin: 2rem 0 3rem; }
+        @media (max-width: 1100px) { .cat-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 700px) { .cat-grid { grid-template-columns: repeat(2, 1fr); } }
+        .cat-item {
+            border-radius: 16px; overflow: hidden; position: relative; aspect-ratio: 3/4;
+            cursor: pointer; border: 1px solid #e2e8f0; transition: all 0.4s;
+        }
+        .cat-item:hover { transform: translateY(-4px); border-color: #3b82f6; box-shadow: 0 20px 40px rgba(59,130,246,0.1); }
+        .cat-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .cat-item:hover img { transform: scale(1.08); }
+        .cat-item .overlay {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: linear-gradient(transparent, rgba(15,23,42,0.85));
+            padding: 1.5rem; text-align: center;
+        }
+        .cat-item .overlay span {
+            font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 700; color: #fff;
+            background: linear-gradient(135deg, #3b82f6, #2563eb); padding: 0.5rem 1.2rem;
+            border-radius: 50px; display: inline-block; letter-spacing: 0.5px;
+        }
+        .cat-item .cat-placeholder {
+            width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+            font-size: 3rem; background: linear-gradient(135deg, #1e293b, #0f172a);
+        }
+
+        /* ─── Tabs ─── */
+        .tabs-wrap { margin: 2rem 0 3rem; }
+        .tabs-headers { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.5rem; }
+        .tab-btn {
+            padding: 0.6rem 1.5rem; border: none; background: transparent; color: #000000;
+            font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600; cursor: pointer;
+            transition: all 0.3s; border-radius: 50px; letter-spacing: 0.3px;
+        }
+        .tab-btn:hover { color: #b14b4b; background: rgba(0, 0, 0, 0.05); }
+        .tab-btn.active { color: #7a4343; background: linear-gradient(135deg, #000000, #000000); box-shadow: 0 4px 15px rgba(214, 95, 95, 0.3); }
+
+        /* ─── Product Carousel ─── */
+        .prod-scroll { display: flex; gap: 1.2rem; overflow-x: auto; padding: 0.5rem 0 1.5rem; scroll-snap-type: x mandatory; }
+        .prod-scroll::-webkit-scrollbar { height: 6px; }
+        .prod-scroll::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 10px; }
+        .prod-scroll::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 10px; }
+        .prod-card {
+            min-width: 240px; max-width: 240px; border-radius: 16px; border: 1px solid #e2e8f0;
+            background: #ffffff; padding: 1rem; transition: all 0.4s;
+            scroll-snap-align: start; flex-shrink: 0;
+        }
+        .prod-card:hover { transform: translateY(-4px); border-color: #3b82f6; box-shadow: 0 15px 40px rgba(59,130,246,0.08); }
+        .prod-card .thumb { width: 100%; aspect-ratio: 1; border-radius: 12px; background: #f8fafc; margin-bottom: 0.8rem; overflow: hidden; }
+        .prod-card .thumb img { width: 100%; height: 100%; object-fit: cover; }
+        .prod-card h4 { font-family: 'Inter', sans-serif; font-size: 0.82rem; font-weight: 600; color: #0f172a; margin-bottom: 0.3rem; }
+        .prod-card .price { font-weight: 700; color: #3b82f6; font-size: 0.95rem; }
+        .prod-card .thumb .img-fallback {
+            width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, #e2e8f0, #cbd5e1); color: #94a3b8; font-size: 2rem;
+        }
+
+        /* ─── Banner CTA ─── */
+        .banner-cta {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+            background: linear-gradient(135deg, #000000 0%, #ac6231 40%, #c23328 100%);
+            border-radius: 20px; padding: 4rem; margin: 3rem 0; position: relative; overflow: hidden;
+        }
+        .banner-cta::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(59,130,246,0.06) 0%, transparent 50%);
+            animation: heroGlow 8s ease-in-out infinite alternate;
+        }
+        .banner-cta > * { position: relative; z-index: 2; }
+        .banner-cta h2 { font-size: clamp(1.8rem, 4vw, 3rem); color: #000000; }
+        .banner-cta h2 .highlight { background: linear-gradient(135deg, #000000, #000000); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .banner-cta .sub { color: rgba(0, 0, 0, 0.6); font-size: 0.95rem; margin: 1rem 0; }
+        .countdown { display: flex; gap: 1.5rem; }
+        .cd-item { text-align: center; }
+        .cd-item .num { font-family: 'Montserrat', sans-serif; font-size: 2.5rem; font-weight: 800; color: #60a5fa; line-height: 1; }
+        .cd-item .lbl { font-size: 0.75rem; color: rgba(0, 0, 0, 0.5); text-transform: uppercase; letter-spacing: 1px; margin-top: 0.3rem; }
+        .banner-cta .btn { margin-top: 1.5rem; }
+
+        /* ─── Deal Banners ─── */
+        .deal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 3rem 0; }
+        @media (max-width: 980px) { .deal-grid { grid-template-columns: 1fr; } }
+        .deal-card {
+            border-radius: 20px; overflow: hidden; position: relative; min-height: 320px;
+            border: 1px solid #e2e8f0; cursor: pointer; transition: all 0.4s;
+        }
+        .deal-card:hover { transform: translateY(-4px); border-color: #3b82f6; box-shadow: 0 20px 50px rgba(59,130,246,0.08); }
+        .deal-card img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; transition: transform 0.5s; }
+        .deal-card:hover img { transform: scale(1.06); }
+        .deal-card .deal-overlay {
+            position: absolute; inset: 0; background: linear-gradient(transparent 30%, rgba(15,23,42,0.85));
+            display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem;
+        }
+        .deal-card .badge { font-size: 0.75rem; font-weight: 700; color: #fff; background: linear-gradient(135deg, #3b82f6, #2563eb); padding: 0.3rem 1rem; border-radius: 50px; display: inline-block; width: fit-content; margin-bottom: 0.5rem; letter-spacing: 0.5px; }
+        .deal-card h3 { color: #fff; font-size: 1.2rem; }
+        .deal-card .shop-link { color: #93c5fd; font-size: 0.85rem; font-weight: 600; margin-top: 0.5rem; display: inline-flex; align-items: center; gap: 0.3rem; transition: gap 0.3s; }
+        .deal-card:hover .shop-link { gap: 0.6rem; }
+
+        /* ─── Testimonials ─── */
+        .testimonials { margin: 3rem 0; }
+        .testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        @media (max-width: 980px) { .testimonial-grid { grid-template-columns: 1fr; } }
+        .testimonial-card {
+            background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 2rem;
+            transition: all 0.4s; position: relative;
+        }
+        .testimonial-card:hover { transform: translateY(-4px); border-color: #3b82f6; box-shadow: 0 20px 50px rgba(59,130,246,0.08); }
+        .testimonial-card .stars { color: #fbbf24; font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 2px; }
+        .testimonial-card blockquote { font-size: 0.92rem; color: #475569; line-height: 1.7; font-style: italic; margin-bottom: 1.2rem; }
+        .testimonial-card cite { display: flex; align-items: center; gap: 0.8rem; font-style: normal; }
+        .testimonial-card .avatar {
+            width: 44px; height: 44px; border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6, #2563eb); display: flex;
+            align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 1rem;
+        }
+        .testimonial-card .name { font-weight: 600; color: #0f172a; font-size: 0.9rem; }
+        .testimonial-card .role { font-size: 0.78rem; color: #94a3b8; }
+
+        /* ─── Brand Story ─── */
+        .brand-story {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+            margin: 4rem 0; padding: 4rem; background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            border-radius: 20px; border: 1px solid #e2e8f0;
+        }
+        @media (max-width: 900px) { .brand-story { grid-template-columns: 1fr; padding: 2rem; text-align: center; } }
+        .brand-story h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); color: #0f172a; margin-bottom: 1rem; }
+        .brand-story p { color: #64748b; font-size: 0.95rem; margin-bottom: 1.5rem; max-width: 500px; }
+        @media (max-width: 900px) { .brand-story p { max-width: 100%; } }
+        .brand-story .story-stats { display: flex; gap: 2rem; }
+        @media (max-width: 500px) { .brand-story .story-stats { flex-direction: column; gap: 0.8rem; } }
+        .brand-story .story-stat { text-align: center; }
+        .brand-story .story-stat .num { font-family: 'Montserrat', sans-serif; font-size: 2rem; font-weight: 800; color: #dc2626; }
+        .brand-story .story-stat .lbl { font-size: 0.8rem; color: #94a3b8; }
+        .brand-story .story-visual {
+            background: linear-gradient(135deg, #dc2626, #991b1b); border-radius: 16px;
+            padding: 3rem; text-align: center; color: #fff; min-height: 300px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            position: relative; overflow: hidden;
+        }
+        .brand-story .story-visual::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle at 30% 40%, rgba(255,255,255,0.08) 0%, transparent 50%);
+            animation: heroGlow 8s ease-in-out infinite alternate;
+        }
+        .brand-story .story-visual > * { position: relative; z-index: 1; }
+        .brand-story .story-visual .big-icon { font-size: 5rem; margin-bottom: 1rem; }
+        .brand-story .story-visual h3 { font-size: 1.5rem; color: #fff; }
+        .brand-story .story-visual p { color: rgba(255,255,255,0.7); margin: 0.5rem 0 0; }
+
+        /* ─── Trust Badges ─── */
+        .trust-badges { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin: 3rem 0; padding: 2.5rem; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 20px; }
+        @media (max-width: 980px) { .trust-badges { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 500px) { .trust-badges { grid-template-columns: 1fr; } }
+        .trust-item { text-align: center; padding: 1rem; }
+        .trust-item .ticon { font-size: 2rem; margin-bottom: 0.6rem; }
+        .trust-item h4 { font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600; color: #0f172a; margin-bottom: 0.3rem; }
+        .trust-item p { font-size: 0.78rem; color: #94a3b8; }
+
+        /* ─── Featured Athlete Spotlight ─── */
+        .spotlight {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+            margin: 3rem 0; border-radius: 20px; overflow: hidden;
+            background: linear-gradient(135deg, #000000, #cc1610); position: relative;
+        }
+        @media (max-width: 900px) { .spotlight { grid-template-columns: 1fr; text-align: center; } }
+        .spotlight::before {
+            content: ''; position: absolute; top: -50%; right: -50%; width: 100%; height: 200%;
+            background: radial-gradient(circle at 70% 50%, rgba(0, 0, 0, 0.08) 0%, transparent 50%);
+        }
+        .spotlight > * { position: relative; z-index: 1; }
+        .spotlight-content { padding: 3rem; }
+        .spotlight-content .badge-sport {
+            display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px;
+            text-transform: uppercase; color: #f87171; margin-bottom: 1rem;
+        }
+        .spotlight-content h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); color: #030801; margin-bottom: 0.8rem; }
+        .spotlight-content p { color: rgba(0, 0, 0, 0.6); font-size: 0.92rem; margin-bottom: 1.5rem; max-width: 450px; }
+        @media (max-width: 900px) { .spotlight-content p { max-width: 100%; } }
+        .spotlight-content .athlete-name { font-family: 'Montserrat', sans-serif; font-size: 1.2rem; font-weight: 700; color: #000000; }
+        .spotlight-content .athlete-stat { color: #000000; font-size: 0.85rem; font-weight: 600; }
+        .spotlight-visual {
+            min-height: 350px; display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(160deg, #1a0000, #2d0000);
+            position: relative; overflow: hidden;
+        }
+        .spotlight-visual .athlete-icon { font-size: 6rem; filter: drop-shadow(0 0 40px rgba(220,38,38,0.3)); }
+        .spotlight-visual .glow-ring {
+            position: absolute; width: 200px; height: 200px; border-radius: 50%;
+            border: 2px solid rgba(220,38,38,0.15); animation: pulseRing 3s ease-in-out infinite;
+        }
+        @keyframes pulseRing { 0%, 100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.3); opacity: 0; } }
+
+        /* ─── Newsletter ─── */
+        .newsletter {
+            text-align: center; padding: 4rem 2rem; margin: 3rem 0;
+            background: linear-gradient(135deg, #eb6912, #b62b26); border-radius: 20px;
+            border: 1px solid #e2e8f0;
+        }
+        .newsletter h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); color: #b62727; margin-bottom: 0.5rem; }
+        .newsletter p { color: #64748b; margin-bottom: 2rem; }
+        .news-form { display: flex; max-width: 500px; margin: 0 auto; gap: 0; border-radius: 50px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff; }
+        .news-form input { flex: 1; padding: 0.9rem 1.5rem; border: none; background: transparent; color: #e02525; font-family: 'Inter', sans-serif; font-size: 0.9rem; outline: none; }
+        .news-form input::placeholder { color: #94a3b8; }
+        .news-form button { padding: 0.9rem 2rem; border: none; background: linear-gradient(135deg, #3b82f6, #2563eb); color: #fff; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 0.88rem; transition: opacity 0.3s; }
+        .news-form button:hover { opacity: 0.9; }
+
+        /* ─── Features ─── */
+        .features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin: 3rem 0; }
+        @media (max-width: 980px) { .features { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 500px) { .features { grid-template-columns: 1fr; } }
+        .feature-item { text-align: center; padding: 2rem 1.5rem; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; transition: all 0.3s; }
+        .feature-item:hover { border-color: #3b82f6; transform: translateY(-3px); box-shadow: 0 8px 25px rgba(59,130,246,0.06); }
+        .feature-item .ficon { font-size: 2.2rem; margin-bottom: 0.8rem; }
+        .feature-item h4 { font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; color: #0f172a; margin-bottom: 0.3rem; }
+        .feature-item p { font-size: 0.82rem; color: #64748b; }
+
+        /* ─── Back to Top ─── */
+        .back-to-top {
+            position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
+            width: 48px; height: 48px; border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6, #2563eb); color: #fff;
+            border: none; cursor: pointer; font-size: 1.2rem;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 20px rgba(59,130,246,0.3);
+            opacity: 0; visibility: hidden; transform: translateY(20px);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+        .back-to-top:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(59,130,246,0.4); }
+
+        /* ─── Footer ─── */
+        .footer {
+            background: #682308; border-top: 1px solid rgba(59,130,246,0.06); padding: 4rem 2rem 2rem;
+        }
+        .footer-inner { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 2fr; gap: 3rem; }
+        @media (max-width: 980px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 600px) { .footer-inner { grid-template-columns: 1fr; } }
+        .footer-col h3 { font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600; color: #f1f5f9; margin-bottom: 1.2rem; }
+        .footer-col p { color: rgba(148,163,184,0.6); font-size: 0.85rem; line-height: 1.7; }
+        .footer-col .brand { margin-bottom: 1rem; color: #f1f5f9; }
+        .footer-links li { margin-bottom: 0.6rem; }
+        .footer-links a { color: rgba(148,163,184,0.6); font-size: 0.85rem; transition: color 0.3s; }
+        .footer-links a:hover { color: #60a5fa; }
+        .footer-social { display: flex; gap: 0.8rem; margin-top: 1rem; }
+        .footer-social a {
+            width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(59,130,246,0.08); display: flex; align-items: center; justify-content: center;
+            color: rgba(148,163,184,0.5); font-size: 0.9rem; transition: all 0.3s;
+        }
+        .footer-social a:hover { background: linear-gradient(135deg, #3b82f6, #2563eb); color: #fff; border-color: transparent; }
+        .footer-news .news-form { max-width: 100%; }
+        .footer-bottom { max-width: 1400px; margin: 3rem auto 0; padding-top: 2rem; border-top: 1px solid rgba(59,130,246,0.06); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-bottom p { color: rgba(148,163,184,0.3); font-size: 0.8rem; }
+        .footer-payments { display: flex; gap: 0.5rem; }
+        .footer-payments span { font-size: 1.5rem; opacity: 0.3; }
+
+        /* ─── Nav Icons ─── */
+        .nav-icon-wrap { display: flex; align-items: center; gap: 1rem; }
+        .ni { width: 20px; height: 20px; color: #64748b; cursor: pointer; transition: color 0.3s; }
+        .ni:hover { color: #3b82f6; }
+        .ni-cart { position: relative; }
+        .ni-cart .count { position: absolute; top: -6px; right: -6px; width: 16px; height: 16px; background: #3b82f6; color: #fff; font-size: 0.6rem; font-weight: 700; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+
+        @media (max-width: 900px) {
+            .hero { grid-template-columns: 1fr; padding: 2rem; }
+            .hero-card { order: -1; }
+            .stats { grid-template-columns: repeat(2, 1fr); }
+            .banner-cta { grid-template-columns: 1fr; text-align: center; padding: 2rem; }
+            .countdown { justify-content: center; }
+        }
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            .nav-links {
+                position: fixed; top: 60px; left: 0; right: 0;
+                background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(20px);
+                flex-direction: column; padding: 1.5rem; gap: 1rem;
+                border-bottom: 1px solid #e2e8f0;
+                transform: translateY(-120%); opacity: 0; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                z-index: 999;
+            }
+            .nav-links.open { transform: translateY(0); opacity: 1; }
+            .nav-links a { font-size: 1rem; padding: 0.5rem 0; }
+            .nav-links a::after { display: none; }
+            .nav-inner { padding: 0.8rem 1rem; flex-wrap: wrap; gap: 0.3rem; }
+            .stats { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ─── Top Announcement Bar ─── -->
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <div class="top-bar-scroll">
+                <span class="top-bar-item"><strong>New Year Sale:</strong> Flat 10% OFF on All Sports Wear!</span>
+                <span class="top-bar-item"><strong>Dye Sublimation Printing:</strong> Vibrant & Durable Designs!</span>
+                <span class="top-bar-item"><strong>Free Shipping</strong> on Orders Over $375!</span>
+                <span class="top-bar-item"><strong>Quick 21-Day Turnaround:</strong> Gear Up Faster!</span>
+                <span class="top-bar-item"><strong>New Year Sale:</strong> Flat 10% OFF on All Sports Wear!</span>
+                <span class="top-bar-item"><strong>Dye Sublimation Printing:</strong> Vibrant & Durable Designs!</span>
+                <span class="top-bar-item"><strong>Free Shipping</strong> on Orders Over $375!</span>
+                <span class="top-bar-item"><strong>Quick 21-Day Turnaround:</strong> Gear Up Faster!</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── Navigation ─── -->
+    <nav class="nav" id="navbar">
+        <div class="nav-inner">
+            <a href="sports.html" class="brand">
+                <span class="logo-icon">
+                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="40" height="40" rx="10" fill="url(#logoGrad)"/>
+                        <path d="M20 6C14 6 10 12 10 18c0 6 4 12 10 16 6-4 10-10 10-16 0-6-4-12-10-12z" fill="#fff" opacity="0.15"/>
+                        <path d="M20 8c-4 0-7 5-7 10s3 10 7 13c4-3 7-8 7-13s-3-10-7-10z" fill="#fff" opacity="0.25"/>
+                        <path d="M14 18h12M20 8v22" stroke="#fff" stroke-width="1.2" stroke-linecap="round" opacity="0.3"/>
+                        <path d="M20 12c-2.5 0-5 3-5 6s2.5 6 5 8c2.5-2 5-5 5-8s-2.5-6-5-6z" fill="#fff" opacity="0.9"/>
+                        <path d="M20 14c-1.5 0-3 2-3 4s1.5 4 3 5c1.5-1 3-3 3-5s-1.5-4-3-4z" fill="#dc2626"/>
+                        <defs>
+                            <linearGradient id="logoGrad" x1="0" y1="0" x2="40" y2="40">
+                                <stop offset="0%" stop-color="#dc2626"/>
+                                <stop offset="100%" stop-color="#991b1b"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </span> Apex<span>Wear</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="sports.html" class="active">Home</a>
+                <a href="task-about.html">About</a>
+                <a href="task-services.html">Services</a>
+                <a href="task-contact.html">Contact</a>
+            </div>
+            <div style="display:flex;align-items:center;gap:0.8rem;">
+                <div class="nav-icon-wrap">
+                    <a href="account.html" title="My Account">
+                        <svg class="ni" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+                    </a>
+                    <a href="search.html" title="Search Products">
+                        <svg class="ni" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                    </a>
+                    <a href="cart.html" title="View Cart">
+                        <svg class="ni ni-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/><span class="count">0</span></svg>
+                    </a>
+                </div>
+                <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container page-in">
+
+        <!-- ─── Hero with Basketball Player Background ─── -->
+        <section class="hero">
+            <div class="hero-bg"></div>
+            <div class="reveal" style="animation-delay: 60ms">
+                <span class="section-label" style="color:#f87171;">Studio Session</span>
+                <h1>In the Zone.<br><span class="highlight">Unleash the Heat.</span></h1>
+                <p>Cinematic performance wear engineered for elite athletes. White jersey, red trim — the look of a champion, frozen in motion.</p>
+                <div class="hero-actions">
+                    <a href="sports-basketball.html" class="btn btn-primary">Explore Collection →</a>
+                    <a href="#" class="btn btn-secondary">Watch Film</a>
+                </div>
+            </div>
+            <aside class="hero-card reveal floaty" style="animation-delay: 140ms">
+                <div class="mini-grid">
+                    <div class="mini"><b>🔥 Elite Series</b><span>White jersey · red & black trim</span></div>
+                    <div class="mini"><b>📸 Motion Capture</b><span>High-contrast studio lighting</span></div>
+                    <div class="mini"><b>🏀 Game Ready</b><span>Moisture-wicking pro fabric</span></div>
+                    <div class="mini"><b>⚡ Muscle Tone</b><span>Performance cut · maximum mobility</span></div>
+                </div>
+            </aside>
+        </section>
+
+        <!-- ─── Stats ─── -->
+        <div class="stats">
+            <div class="stat"><div class="num">500+</div><div class="label">Products</div></div>
+            <div class="stat"><div class="num">50K+</div><div class="label">Athletes</div></div>
+            <div class="stat"><div class="num">99%</div><div class="label">Satisfaction</div></div>
+            <div class="stat"><div class="num">21</div><div class="label">Day Turnaround</div></div>
+        </div>
+
+        <!-- ─── Shop by Category ─── -->
+        <div class="scroll-reveal">
+            <h2 class="section-title">Shop by Category</h2>
+        </div>
+        <div class="cat-grid scroll-reveal">
+            <a href="sports-basketball.html" class="cat-item">
+                <img src="https://echopride.store/wp-content/uploads/2025/08/m3_cat_01.jpg" alt="Basketball" loading="lazy" onerror="this.parentElement.innerHTML='<div class=cat-placeholder>🏀</div>'" />
+                <div class="overlay"><span>Basketball</span></div>
+            </a>
+            <a href="sports-football.html" class="cat-item">
+                <img src="https://echopride.store/wp-content/uploads/2025/08/m3_cat_02.jpg" alt="Football" loading="lazy" onerror="this.parentElement.innerHTML='<div class=cat-placeholder>🏈</div>'" />
+                <div class="overlay"><span>Football</span></div>
+            </a>
+            <a href="sports-soccer.html" class="cat-item">
+                <img src="https://echopride.store/wp-content/uploads/2025/08/m3_cat_03.jpg" alt="Soccer" loading="lazy" onerror="this.parentElement.innerHTML='<div class=cat-placeholder>⚽</div>'" />
+                <div class="overlay"><span>Soccer</span></div>
+            </a>
+            <a href="sports-softball.html" class="cat-item">
+                <img src="https://echopride.store/wp-content/uploads/2025/08/m3_cat_04.jpg" alt="Softball" loading="lazy" onerror="this.parentElement.innerHTML='<div class=cat-placeholder>🥎</div>'" />
+                <div class="overlay"><span>Softball</span></div>
+            </a>
+            <a href="sports-rugby.html" class="cat-item">
+                <img src="https://echopride.store/wp-content/uploads/2025/08/m3_cat_05.jpg" alt="Rugby" loading="lazy" onerror="this.parentElement.innerHTML='<div class=cat-placeholder>🏉</div>'" />
+                <div class="overlay"><span>Rugby</span></div>
+            </a>
+        </div>
+
+        <!-- ─── New Arrivals Tabs ─── -->
+        <div class="tabs-wrap scroll-reveal">
+            <h2 class="section-title">New Arrivals</h2>
+            <div class="tabs-headers">
+                <button class="tab-btn active" onclick="switchTab(this,'bball')">Basketball Uniform</button>
+                <button class="tab-btn" onclick="switchTab(this,'fball')">Football Uniform</button>
+                <button class="tab-btn" onclick="switchTab(this,'soccer')">Soccer Uniform</button>
+                <button class="tab-btn" onclick="switchTab(this,'rugby')">Rugby Uniform</button>
+            </div>
+            <div class="prod-scroll" id="bball">
+                <div class="prod-card"><div class="thumb"><img src="https://echopride.store/wp-content/uploads/2025/09/a-high-performance-fleece-lined-hoodie-for-basketb-700x700.webp" alt="" loading="lazy" onerror="this.outerHTML='<div class=img-fallback>👕</div>'"/></div><h4>High-Performance Fleece Hoodie</h4><span class="price">$50.00</span></div>
+                <div class="prod-card"><div class="thumb"><img src="https://echopride.store/wp-content/uploads/2025/09/a-lightweight-basketball-coach-s-windbreaker-with--700x700.webp" alt="" loading="lazy" onerror="this.outerHTML='<div class=img-fallback>🧥</div>'"/></div><h4>Lightweight Windbreaker Jacket</h4><span class="price">$60.00</span></div>
+                <div class="prod-card"><div class="thumb"><img src="https://echopride.store/wp-content/uploads/2025/09/a-minimalist-basketball-coach-s-jacket-with-subtle-700x700.webp" alt="" loading="lazy" onerror="this.outerHTML='<div class=img-fallback>🧥</div>'"/></div><h4>Coach's Hoodie – Performance</h4><span class="price">$50.00</span></div>
+                <div class="prod-card"><div class="thumb"><img src="https://echopride.store/wp-content/uploads/2025/09/a-moisture-wicking-basketball-coach-s-hoodie-with-1-700x700.webp" alt="" loading="lazy" onerror="this.outerHTML='<div class=img-fallback>👕</div>'"/></div><h4>Moisture-Wicking Coach Hoodie</h4><span class="price">$50.00</span></div>
+                <div class="prod-card"><div class="thumb"><img src="https://echopride.store/wp-content/uploads/2025/09/a-moisture-wicking-basketball-coach-s-hoodie-with--700x700.webp" alt="" loading="lazy" onerror="this.outerHTML='<div class=img-fallback>👕</div>'"/></div><h4>Coach's Hoodie – Bold Design</h4><span class="price">$50.00</span></div>
+            </div>
+            <div class="prod-scroll" id="fball" style="display:none">
+                <div class="prod-card"><div class="thumb"><img src="https://echopride.store/wp-content/uploads/2025/09/a-premium-varsity-style-basketball-coaching-jacket-700x700.webp" alt="" loading="lazy" onerror="this.outerHTML='<div class=img-fallback>🧥</div>'"/></div><h4>Premium Varsity Jacket</h4><span class="price">$60.00</span></div>
+                <div class="prod-card"><div class="thumb"><img src="https://echopride.store/wp-content/uploads/2025/09/a-quarter-zip-basketball-coach-s-pullover-with-a-s-700x700.webp" alt="" loading="lazy" onerror="this.outerHTML='<div class=img-fallback>👕</div>'"/></div><h4>Quarter-Zip Pullover</h4><span class="price">$50.00</span></div>
+                <div class="prod-card"><div class="thumb"><img src="https://echopride.store/wp-content/uploads/2025/09/a-sleek-modern-basketball-coach-s-hoodie-featuri-700x700.webp" alt="" loading="lazy" onerror="this.outerHTML='<div class=img-fallback>👕</div>'"/></div><h4>Sleek Modern Hoodie</h4><span class="price">$50.00</span></div>
+                <div class="prod-card"><div class="thumb"><img src="https://echopride.store/wp-content/uploads/2025/09/a-waterproof-basketball-coach-s-jacket-with-a-bold-700x700.webp" alt="" loading="lazy" onerror="this.outerHTML='<div class=img-fallback>🧥</div>'"/></div><h4>Waterproof Coach Jacket</h4><span class="price">$60.00</span></div>
+                <div class="prod-card"><div class="thumb"><img src="https://echopride.store/wp-content/uploads/2025/09/a-zip-up-hoodie-designed-for-basketball-coaches-w-700x700.webp" alt="" loading="lazy" onerror="this.outerHTML='<div class=img-fallback>👕</div>'"/></div><h4>Zip-Up Coach Hoodie</h4><span class="price">$50.00</span></div>
+            </div>
+        </div>
+
+        <!-- ─── Top Trending ─── -->
+        <div class="scroll-reveal">
+            <h2 class="section-title">Top Trending</h2>
+            <div class="prod-scroll">
+                <div class="prod-card"><div class="thumb"><img src="https://echopride.store/wp-content/uploads/2025/09/a-high-performance-fleece-lined-hoodie-for-basketb-700x700.webp" alt="" loading="lazy" onerror="this.outerHTML='<div class=img-fallback>👕</div>'"/></div><h4>Fleece-Lined Hoodie</h4><span class="price">$50.00</span></div>
+                <div class="prod-card"><div class="thumb"><img src="https://echopride.store/wp-content/uploads/2025/09/a-lightweight-basketball-coach-s-windbreaker-with--700x700.webp" alt="" loading="lazy" onerror="this.outerHTML='<div class=img-fallback>🧥</div>'"/></div><h4>Windbreaker Jacket</h4><span class="price">$60.00</span></div>
+                <div class="prod-card"><div class="thumb"><img src="https://echopride.store/wp-content/uploads/2025/09/a-minimalist-basketball-coach-s-jacket-with-subtle-700x700.webp" alt="" loading="lazy" onerror="this.outerHTML='<div class=img-fallback>🧥</div>'"/></div><h4>Coach's Jacket</h4><span class="price">$50.00</span></div>
+                <div class="prod-card"><div class="thumb"><img src="https://echopride.store/wp-content/uploads/2025/09/a-moisture-wicking-basketball-coach-s-hoodie-with-1-700x700.webp" alt="" loading="lazy" onerror="this.outerHTML='<div class=img-fallback>👕</div>'"/></div><h4>Moisture-Wicking Hoodie</h4><span class="price">$50.00</span></div>
+                <div class="prod-card"><div class="thumb"><img src="https://echopride.store/wp-content/uploads/2025/09/a-premium-varsity-style-basketball-coaching-jacket-700x700.webp" alt="" loading="lazy" onerror="this.outerHTML='<div class=img-fallback>🧥</div>'"/></div><h4>Varsity Coaching Jacket</h4><span class="price">$60.00</span></div>
+                <div class="prod-card"><div class="thumb"><img src="https://echopride.store/wp-content/uploads/2025/09/a-quarter-zip-basketball-coach-s-pullover-with-a-s-700x700.webp" alt="" loading="lazy" onerror="this.outerHTML='<div class=img-fallback>👕</div>'"/></div><h4>Quarter-Zip Pullover</h4><span class="price">$50.00</span></div>
+            </div>
+        </div>
+
+        <!-- ─── Banner CTA (SkyWalker Specials) ─── -->
+        <div class="banner-cta scroll-reveal">
+            <div>
+                <span class="section-label">SkyWalker Specials</span>
+                <h2>High-Flyin' Deals on<br><span class="highlight">Basketball Gear!</span></h2>
+                <p class="sub">Limited time offers on premium basketball uniforms and accessories. Don't miss out!</p>
+                <a href="task-services.html" class="btn btn-primary">Shop now →</a>
+            </div>
+            <div>
+                <div class="countdown">
+                    <div class="cd-item"><div class="num" id="cdDays">05</div><div class="lbl">Days</div></div>
+                    <div class="cd-item"><div class="num" id="cdHours">12</div><div class="lbl">Hours</div></div>
+                    <div class="cd-item"><div class="num" id="cdMinutes">48</div><div class="lbl">Minutes</div></div>
+                    <div class="cd-item"><div class="num" id="cdSeconds">36</div><div class="lbl">Seconds</div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ─── Deal Banners ─── -->
+        <div class="deal-grid scroll-reveal">
+            <div class="deal-card">
+                <img src="https://echopride.store/wp-content/uploads/2025/08/m3_banner_01.jpg" alt="Sports Shoes" loading="lazy" onerror="this.style.display='none'" />
+                <div class="deal-overlay">
+                    <span class="badge">Up to 50%</span>
+                    <h3>Score Big Savings on Sports Shoes</h3>
+                    <span class="shop-link">Shop now →</span>
+                </div>
+            </div>
+            <div class="deal-card">
+                <img src="https://echopride.store/wp-content/uploads/2025/08/m3_banner_022.jpeg" alt="Sportswear" loading="lazy" onerror="this.style.display='none'" />
+                <div class="deal-overlay">
+                    <span class="badge">Up to 40%</span>
+                    <h3>Huge Discounts on Sportswear</h3>
+                    <span class="shop-link">Shop now →</span>
+                </div>
+            </div>
+            <div class="deal-card">
+                <img src="https://echopride.store/wp-content/uploads/2025/08/m3_banner_03.jpg" alt="Accessories" loading="lazy" onerror="this.style.display='none'" />
+                <div class="deal-overlay">
+                    <span class="badge">Up to 30%</span>
+                    <h3>Accessories Markdown Madness</h3>
+                    <span class="shop-link">Shop now →</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ─── Testimonials ─── -->
+        <div class="testimonials scroll-reveal">
+            <span class="section-label">Testimonials</span>
+            <h2 class="section-title">What Athletes Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <blockquote>"ApexWear gear is unmatched. The fit, the fabric, the feel — it's like a second skin on the court."</blockquote>
+                    <cite>
+                        <div class="avatar">JD</div>
+                        <div><div class="name">Jaylen Davis</div><div class="role">Pro Basketball Player</div></div>
+                    </cite>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <blockquote>"The dye sublimation printing is incredible. Our team colors pop like never before. Game changer."</blockquote>
+                    <cite>
+                        <div class="avatar">MT</div>
+                        <div><div class="name">Marcus Thompson</div><div class="role">Football Coach</div></div>
+                    </cite>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <blockquote>"Quick turnaround, premium quality, and custom designs that actually last. We've found our gear partner for life."</blockquote>
+                    <cite>
+                        <div class="avatar">SR</div>
+                        <div><div class="name">Sofia Reyes</div><div class="role">Soccer Team Captain</div></div>
+                    </cite>
+                </div>
+            </div>
+        </div>
+
+        <!-- ─── Brand / Mission Story ─── -->
+        <div class="brand-story scroll-reveal">
+            <div>
+                <span class="section-label">Our Mission</span>
+                <h2>Forged in Competition.<br>Built for Champions.</h2>
+                <p>At ApexWear, we believe what you wear fuels how you perform. Every stitch, every seam, every fabric choice is engineered with one goal: to equip athletes with gear that pushes boundaries.</p>
+                <p>From local leagues to pro arenas, we've outfitted over 50,000 athletes worldwide with custom sportswear that blends cutting-edge dye sublimation technology with uncompromising quality.</p>
+                <div class="story-stats">
+                    <div class="story-stat"><div class="num">12+</div><div class="lbl">Years in Business</div></div>
+                    <div class="story-stat"><div class="num">5K+</div><div class="lbl">Teams Outfitted</div></div>
+                    <div class="story-stat"><div class="num">50+</div><div class="lbl">Countries Served</div></div>
+                </div>
+            </div>
+            <div class="story-visual">
+                <div class="big-icon">🏆</div>
+                <h3>Your Greatness,<br>Our Gear.</h3>
+                <p>Premium sportswear for champions</p>
+            </div>
+        </div>
+
+        <!-- ─── Trust Badges ─── -->
+        <div class="trust-badges scroll-reveal">
+            <div class="trust-item">
+                <div class="ticon">🔒</div>
+                <h4>Secure Checkout</h4>
+                <p>256-bit SSL encryption for safe payments</p>
+            </div>
+            <div class="trust-item">
+                <div class="ticon">🔄</div>
+                <h4>Money-Back Guarantee</h4>
+                <p>30-day risk-free returns on all orders</p>
+            </div>
+            <div class="trust-item">
+                <div class="ticon">🚚</div>
+                <h4>Free Shipping</h4>
+                <p>On orders over $375 worldwide</p>
+            </div>
+            <div class="trust-item">
+                <div class="ticon">💬</div>
+                <h4>24/7 Support</h4>
+                <p>Dedicated team ready to help anytime</p>
+            </div>
+        </div>
+
+        <!-- ─── Featured Athlete Spotlight ─── -->
+        <div class="spotlight scroll-reveal">
+            <div class="spotlight-content">
+                <span class="badge-sport">Featured Athlete</span>
+                <h2>Dominique "Air" Wilkins</h2>
+                <p>"The gear you wear affects your mindset. ApexWear gives me the confidence to fly higher, move faster, and finish stronger. It's not just apparel — it's armor."</p>
+                <div class="athlete-name">🏀 Dominique Wilkins</div>
+                <div class="athlete-stat">9× NBA All-Star · Hall of Famer · ApexWear Ambassador</div>
+                <br>
+                <a href="sports-basketball.html" class="btn btn-primary">Shop Signature Collection →</a>
+            </div>
+            <div class="spotlight-visual">
+                <div class="glow-ring"></div>
+                <div class="athlete-icon">🏀</div>
+            </div>
+        </div>
+
+        <!-- ─── Why Choose Us ─── -->
+        <div class="scroll-reveal">
+            <h2 class="section-title">Why Choose ApexWear</h2>
+        </div>
+        <section class="cards scroll-reveal">
+            <article class="card">
+                <div class="icon">🏆</div>
+                <h3>Premium Quality</h3>
+                <p>Dye sublimation printing for vibrant, long-lasting designs that never fade.</p>
+            </article>
+            <article class="card">
+                <div class="icon">⚡</div>
+                <h3>Fast Turnaround</h3>
+                <p>Quick 21-day production and delivery so you're always game-ready.</p>
+            </article>
+            <article class="card">
+                <div class="icon">🎨</div>
+                <h3>Custom Designs</h3>
+                <p>Full customization — from colors to logos — your vision, your gear.</p>
+            </article>
+        </section>
+
+        <!-- ─── Newsletter ─── -->
+        <div class="newsletter scroll-reveal">
+            <h2>Get Exclusive Offers & Updates</h2>
+            <p>Subscribe to our newsletter and be the first to know about new drops, deals, and more.</p>
+            <form onsubmit="event.preventDefault();alert('✅ Thank you for subscribing!');" class="news-form">
+                <input type="email" placeholder="Enter your email address..." required />
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+
+        <!-- ─── Features (We're Here For You) ─── -->
+        <div class="scroll-reveal">
+            <h2 class="section-title">We're Here For You</h2>
+        </div>
+        <div class="features scroll-reveal">
+            <div class="feature-item">
+                <div class="ficon">📦</div>
+                <h4>Ship to Home</h4>
+                <p>Order online and have products shipped to you.</p>
+            </div>
+            <div class="feature-item">
+                <div class="ficon">📬</div>
+                <h4>Free In-Store Pickup</h4>
+                <p>Order online and pick up in store.</p>
+            </div>
+            <div class="feature-item">
+                <div class="ficon">💳</div>
+                <h4>Credit Offered</h4>
+                <p>Turn big purchases into small payments.</p>
+            </div>
+            <div class="feature-item">
+                <div class="ficon">🎧</div>
+                <h4>Customer Support</h4>
+                <p>We're here to help you find what you need.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ─── Footer ─── -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-col">
+                <a href="sports.html" class="brand">
+                    <span class="logo-icon">
+                        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:32px;height:32px;">
+                            <rect width="40" height="40" rx="10" fill="url(#logoGrad2)"/>
+                            <path d="M20 12c-2.5 0-5 3-5 6s2.5 6 5 8c2.5-2 5-5 5-8s-2.5-6-5-6z" fill="#fff" opacity="0.9"/>
+                            <path d="M20 14c-1.5 0-3 2-3 4s1.5 4 3 5c1.5-1 3-3 3-5s-1.5-4-3-4z" fill="#dc2626"/>
+                            <defs><linearGradient id="logoGrad2" x1="0" y1="0" x2="40" y2="40"><stop offset="0%" stop-color="#dc2626"/><stop offset="100%" stop-color="#991b1b"/></linearGradient></defs>
+                        </svg>
+                    </span> Apex<span>Wear</span>
+                </a>
+                <p style="margin-top:0.8rem;">Premium sportswear engineered for champions. From custom uniforms to performance gear — we equip your greatness.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook">f</a>
+                    <a href="#" aria-label="Twitter">𝕏</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Useful Links</h3>
+                <ul class="footer-links">
+                    <li><a href="sports.html">Shop</a></li>
+                    <li><a href="task-about.html">About Us</a></li>
+                    <li><a href="task-contact.html">Contact Us</a></li>
+                    <li><a href="#">Wishlist</a></li>
+                    <li><a href="#">Order Status</a></li>
+                    <li><a href="#">Help & FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Top Categories</h3>
+                <ul class="footer-links">
+                    <li><a href="sports-basketball.html">Basketball</a></li>
+                    <li><a href="sports-football.html">Football</a></li>
+                    <li><a href="sports-rugby.html">Rugby</a></li>
+                    <li><a href="sports-soccer.html">Soccer</a></li>
+                    <li><a href="sports-softball.html">Softball</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Let's get in touch</h3>
+                <p>Sign up for our newsletter and receive 10% off your first order.</p>
+                <div class="footer-news" style="margin-top:1rem;">
+                    <form onsubmit="event.preventDefault();alert('✅ Thank you for subscribing!');" class="news-form">
+                        <input type="email" placeholder="Enter your email address..." required />
+                        <button type="submit">→</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 ApexWear. Premium Sportswear. All rights reserved.</p>
+            <div class="footer-payments">
+                <span>💳</span>
+                <span>🏦</span>
+                <span>📱</span>
+                <span>🔷</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ─── Back to Top Button ─── -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+    <script>
+        // ─── Tab Switching ───
+        function switchTab(btn, id) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('.tabs-wrap .prod-scroll').forEach(s => s.style.display = 'none');
+            document.getElementById(id).style.display = 'flex';
+        }
+
+        // ─── Hamburger Menu Toggle ───
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('open');
+            });
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('open');
+                });
+            });
+        }
+
+        // ─── Scroll Reveal ───
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // ─── Back to Top Button ───
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ─── Countdown Timer ───
+        function updateCountdown() {
+            const days = document.getElementById('cdDays');
+            const hours = document.getElementById('cdHours');
+            const minutes = document.getElementById('cdMinutes');
+            const seconds = document.getElementById('cdSeconds');
+            if (!days) return;
+            let d = parseInt(days.textContent) || 5;
+            let h = parseInt(hours.textContent) || 12;
+            let m = parseInt(minutes.textContent) || 48;
+            let s = parseInt(seconds.textContent) || 36;
+            s--;
+            if (s < 0) { s = 59; m--; }
+            if (m < 0) { m = 59; h--; }
+            if (h < 0) { h = 23; d--; }
+            if (d < 0) { d = 5; h = 12; m = 48; s = 36; }
+            days.textContent = String(d).padStart(2, '0');
+            hours.textContent = String(h).padStart(2, '0');
+            minutes.textContent = String(m).padStart(2, '0');
+            seconds.textContent = String(s).padStart(2, '0');
+        }
+        setInterval(updateCountdown, 1000);
+
+        // ─── Navbar shadow on scroll ───
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.06)';
+            } else {
+                navbar.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
